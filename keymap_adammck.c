@@ -23,7 +23,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Layout 1: Function Layer
      * ,-----------------------------------------------------------.
-     * |`  | B-| B+|   |   |   |   |Prv|Ply|Nxt|Mut|V- |V+ |Delete |
+     * |`  | B-| B+|MC*|LP*|   |   |Prv|Ply|Nxt|Mut|V- |V+ |Delete |
      * |-----------------------------------------------------------|
      * |     |   |Up |   |   |   |   |   |   |   |   |   |   |     |
      * |-----------------------------------------------------------|
@@ -33,9 +33,14 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |-----------------------------------------------------------|
      * |Ctrl|Alt |Cmd |                        |Cmd |Alt |FN0 |FN1 |
      * `-----------------------------------------------------------'
+     *
+     * Note: Fn+3/4 are mapped to F16/F17, which are unused by the default macOS
+     *       keybindings. You can map those to Mission Control and Launchpad. It
+     *       is highly non-trivial to get those working properly.
+     *
      */
     KEYMAP_ANSI(
-        GRV,  BRTD, BRTI, NO,   NO,   NO,   NO,   MPRV, MPLY, MNXT, MUTE, VOLD, VOLU, DEL,  \
+        GRV,  BRTD, BRTI, F16,  F17,  NO,   NO,   MPRV, MPLY, MNXT, MUTE, VOLD, VOLU, DEL,  \
         NO,   NO,   UP,   NO,   NO,   NO,   NO,   NO,   UP,   NO,   NO,   NO,   NO,   NO,   \
         NO,   LEFT, DOWN, RGHT, NO,   NO,   NO,   NO,   NO,   NO,   HOME, PGUP,       NO,   \
         TRNS, NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   END,  PGDN,             TRNS, \
