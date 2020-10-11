@@ -34,13 +34,18 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |Ctrl|Alt |Cmd |                        |Cmd |Alt |FN0 |FN1 |
      * `-----------------------------------------------------------'
      *
-     * Note: Fn+3/4 are mapped to F16/F17, which are unused by the default macOS
-     *       keybindings. You can map those to Mission Control and Launchpad. It
-     *       is highly non-trivial to get those working properly.
+     * Note: Fn+3 is Ctrl+Up. This is pretty weird, but it's the default macOS
+     *       keybinding to show Mission Control (in addition to the dedicated
+     *       key), so just works if we do this way.
+     *
+     * Note: Fn+4 is F16, which is unused by the default macOS keybindings. You
+     *       can manually map that to "Show Launchpad" (which is turned off by
+     *       default) in keyboard shortcuts, which works well enough. Sending
+     *       the proper key code is highly non-trivial.
      *
      */
     KEYMAP_ANSI(
-        GRV,  BRTD, BRTI, F16,  F17,  NO,   NO,   MPRV, MPLY, MNXT, MUTE, VOLD, VOLU, DEL,  \
+        GRV,  BRTD, BRTI, FN2,  F16,  NO,   NO,   MPRV, MPLY, MNXT, MUTE, VOLD, VOLU, DEL,  \
         NO,   NO,   UP,   NO,   NO,   NO,   NO,   NO,   UP,   NO,   NO,   NO,   NO,   NO,   \
         NO,   LEFT, DOWN, RGHT, NO,   NO,   NO,   NO,   NO,   NO,   HOME, PGUP,       NO,   \
         TRNS, NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   END,  PGDN,             TRNS, \
@@ -71,6 +76,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Fn action definition
  */
 const action_t PROGMEM fn_actions[] = {
-    [0] = ACTION_LAYER_MOMENTARY(1), /* Monentary layout 1 */
-    [1] = ACTION_LAYER_MOMENTARY(2), /* Monentary layout 2 */
+    [0] = ACTION_LAYER_MOMENTARY(1),        /* Monentary layout 1 */
+    [1] = ACTION_LAYER_MOMENTARY(2),        /* Monentary layout 2 */
+    [2] = ACTION_MODS_KEY(MOD_LCTL, KC_UP), /* Mission control */
 };
